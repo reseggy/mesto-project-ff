@@ -1,13 +1,12 @@
-import { deleteCard } from './createCard.js';
-import {createCard} from './createCard.js';
-import {closePopup} from './popup.js';
-import { addLike } from './createCard.js';
+import { deleteCard } from './card.js';
+import {createCard} from './card.js';
+import {closePopup} from './modal.js';
+import { addLike } from './card.js';
 import { openCard } from './index.js';
 
 const places = document.querySelector('.places');
 const placesList = places.querySelector('.places__list');
 const createCardForm = document.forms.newPlace;
-console.log(createCardForm);
 
 function addCard(evt){
   evt.preventDefault();

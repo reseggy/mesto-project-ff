@@ -1,14 +1,4 @@
-export function closeEsc(evt) {
-  if (evt.key === 'Escape') {
-    const popupOpen = document.querySelector('.popup_is-opened');
-    if (popupOpen) {
-      closePopup(popupOpen);
-    }
-  }
-}
-
 export function openPopup(popup) {
-  popup.classList.add('popup_is-animated');
   popup.classList.add('popup_is-opened');
   document.addEventListener('keydown', closeEsc);
 }
@@ -18,9 +8,19 @@ export function closePopup(popup) {
   document.removeEventListener('keydown', closeEsc);
 }
 
+export function closeEsc(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpen = document.querySelector('.popup_is-opened');
+    if (popupOpen) {
+      closePopup(popupOpen);
+    }
+  }
+}
+
 export function newPopup(buttonSelector, popupSelector) {
   const button = document.querySelector(buttonSelector);
   const popup = document.querySelector(popupSelector);
+  popup.classList.add('popup_is-animated');
 
   button.addEventListener('click', function() {
     openPopup(popup);
@@ -37,11 +37,4 @@ export function newPopup(buttonSelector, popupSelector) {
     };
   });
 };
-
-newPopup('.profile__edit-button', '.popup.popup_type_edit');
-
-newPopup('.profile__add-button', '.popup.popup_type_new-card');
-
-
-
 

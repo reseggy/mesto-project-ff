@@ -1,27 +1,27 @@
-import { closePopup } from "./popup";
+import { closePopup } from "./modal.js";
 
-const currentName = document.querySelector('.profile__title').textContent;
-const nameStroke = document.forms.editProfile.elements.name;
-nameStroke.value = currentName
+const profileTitle = document.querySelector('.profile__title');
+const profileDescription = document.querySelector('.profile__description');
+const popupEdit = document.querySelector('.popup_type_edit');
+const formEditProfile = document.forms.editProfile;
+const nameInput = formEditProfile.name;
+const jobInput = formEditProfile.description;
 
-const currentDescription = document.querySelector('.profile__description').textContent;
-const descriptionStroke = document.forms.editProfile.elements.description;
-descriptionStroke.value = currentDescription
 
-const formElement = document.querySelector('.popup__form')
-const nameInput = formElement.querySelector('.popup__input.popup__input_type_name')
-const jobInput = formElement.querySelector('.popup__input.popup__input_type_description')
+nameInput.value = profileTitle.textContent;
+jobInput.value = profileDescription.textContent;
 
-function handleFormSubmit(evt) {
+
+function submitForm(evt) {
     evt.preventDefault();
+
     const nameNew = nameInput.value;
     const descriptionNew = jobInput.value;
-    const profile = document.querySelector('.profile__title');
-    const description = document.querySelector('.profile__description');
-    profile.textContent = nameNew;
-    description.textContent = descriptionNew;
-    const popup = document.querySelector('.popup_is-opened')
-    closePopup(popup);
+
+    profileTitle.textContent = nameNew;
+    profileDescription.textContent = descriptionNew;
+
+    closePopup(popupEdit);
 }
 
-formElement.addEventListener('submit', handleFormSubmit); 
+formEditProfile.addEventListener('submit', submitForm); 
