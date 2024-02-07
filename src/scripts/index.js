@@ -1,8 +1,8 @@
 import '../pages/index.css';
 import {initialCards} from './cards.js';
 import './modal.js';
-import './formEdit.js';
-import './formCard.js';
+import './formEditProfile.js';
+import './card.js'
 import { openPopup } from './modal.js';
 import { closePopup } from './modal.js';
 import { createCard } from './card.js';
@@ -10,6 +10,7 @@ import { addLike } from './card.js';
 import { deleteCard } from './card.js';
 import { newPopup } from './modal.js';
 
+const createCardForm = document.forms.newPlace;
 const placesList = document.querySelector('.places__list');
 const popup = document.querySelector('.popup.popup_type_image');
 const image = document.querySelector('.popup__image');
@@ -45,3 +46,19 @@ newPopup('.profile__edit-button', '.popup.popup_type_edit');
 
 newPopup('.profile__add-button', '.popup.popup_type_new-card');
 
+function addCard(evt){
+  evt.preventDefault();
+  const popup = document.querySelector('.popup_is-opened')
+  const cardName = createCardForm.placeName.value;
+  const cardLink = createCardForm.link.value;
+  const newCard = {
+    name: cardName,
+    link: cardLink,
+  };
+  const cardElements = createCard(newCard, deleteCard, addLike, openCard);
+  placesList.prepend(cardElements);
+  createCardForm.reset();
+  closePopup(popup);
+};
+
+createCardForm.addEventListener('submit', addCard);

@@ -29,3 +29,4 @@ export function addLike(evt){
 export function deleteCard(card) {
   card.remove();
 };
+
