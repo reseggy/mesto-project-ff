@@ -13,7 +13,7 @@ import { openPopupNewCard } from './modal.js';
 
 const createCardForm = document.forms.newPlace;
 const placesList = document.querySelector('.places__list');
-const popupImage = document.querySelector('.popup.popup_type_image');
+const popupImage = document.querySelector('.popup_type_image');
 const image = document.querySelector('.popup__image');
 const popupCard = document.querySelector('.popup_type_new-card')
 const imageDescription = document.querySelector('.popup__caption');
@@ -22,13 +22,11 @@ const profileDescription = document.querySelector('.profile__description');
 const popupEdit = document.querySelector('.popup_type_edit');
 popupImage.classList.add('popup_is-animated');
 
-function openCard(link, name){
+export function openCard(link, name){
   image.src = link;
   image.alt = name;
-
   imageDescription.textContent = name;
-
-  openPopupImage(popupImage);
+  openPopupImage(popupImage)
 };
 
 initialCards.forEach(cardData => {
@@ -56,12 +54,9 @@ function addCard(evt){
 
 createCardForm.addEventListener('submit', addCard);
 
-
 const formEditProfile = document.forms.editProfile;
 const nameInput = formEditProfile.name;
 const jobInput = formEditProfile.description;
-
-
 
 function submitFormEdit(evt) {
     evt.preventDefault();

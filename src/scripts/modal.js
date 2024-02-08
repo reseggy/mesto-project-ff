@@ -4,15 +4,12 @@ const jobInput = formEditProfile.description;
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
 
-export function createNewPopup(buttonSelector, popupSelector, openPopup, onOpenCallback) {
+export function createNewPopup(buttonSelector, popupSelector, openPopup) {
   const button = document.querySelector(buttonSelector);
   const popup = document.querySelector(popupSelector);
   popup.classList.add('popup_is-animated');
 
   button.addEventListener('click', function() {
-    if (onOpenCallback) {
-      onOpenCallback(); //добавил дополнительную логику для отдельных попапов
-    }
     openPopup(popup);
   });
 
@@ -44,9 +41,18 @@ export function openPopupNewCard(popup) {
 export function openPopupImage(popup){
   popup.classList.add('popup_is-opened');
   document.addEventListener('keydown', closeEsc);
+
+  const closeButton = popup.querySelector('.popup__close');
+  closeButton.addEventListener('click', function() {
+    closePopup(popup);
+  });
+
+  popup.addEventListener('click', function(evt) {
+    if (evt.target === popup) {
+      closePopup(popup);
+    };
+  });
 }
-
-
 
 export function closePopup(popup) {
   popup.classList.remove('popup_is-opened');
