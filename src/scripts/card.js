@@ -16,7 +16,7 @@ export function createCard (data, deleteCallback, likeCallback, openCallback){
 
   const openPopup = card.querySelector('.card__image');
   openPopup.addEventListener('click', function(){
-    openCallback(data.link, data.name)
+    openCallback(data.link, data.name);
   });
 
   return card;
