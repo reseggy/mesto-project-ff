@@ -1,15 +1,12 @@
 import '../pages/index.css';
 import {initialCards} from './cards.js';
-import './modal.js';
-import './card.js'
-import { openPopupImage } from './modal.js';
 import { closePopup } from './modal.js';
+import { ClosePopupListener } from './modal.js';
 import { createCard } from './card.js';
 import { addLike } from './card.js';
 import { deleteCard } from './card.js';
-import { createNewPopup } from './modal.js';
-import { openPopupEdit } from './modal.js';
-import { openPopupNewCard } from './modal.js';
+import { openPopup } from './modal.js';
+
 
 const createCardForm = document.forms.newPlace;
 const placesList = document.querySelector('.places__list');
@@ -20,23 +17,43 @@ const imageDescription = document.querySelector('.popup__caption');
 const profileTitle = document.querySelector('.profile__title');
 const profileDescription = document.querySelector('.profile__description');
 const popupEdit = document.querySelector('.popup_type_edit');
-popupImage.classList.add('popup_is-animated');
+const editButton = document.querySelector('.profile__edit-button');
+const addCardButton = document.querySelector('.profile__add-button');
 
-export function openCard(link, name){
+addCardButton.addEventListener('click', function(){
+  openPopupNewCard(popupCard);
+});
+
+editButton.addEventListener('click', function(){
+  openPopupEdit(popupEdit)
+});
+
+function openPopupEdit(popup) {
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileDescription.textContent;
+  openPopup(popup);
+};
+
+function openPopupNewCard(popup) {
+  openPopup(popup);
+};
+
+function openPopupImage(popup){
+  openPopup(popup);
+};
+
+ClosePopupListener('.popup.popup_type_edit', openPopupEdit);
+
+ClosePopupListener('.popup.popup_type_new-card', openPopupNewCard);
+
+ClosePopupListener('.popup.popup_type_image', openPopupImage);
+
+function openCard(link, name){
   image.src = link;
   image.alt = name;
   imageDescription.textContent = name;
-  openPopupImage(popupImage)
+  openPopupImage(popupImage);
 };
-
-initialCards.forEach(cardData => {
-  const cardElements = createCard(cardData, deleteCard, addLike, openCard);
-  placesList.append(cardElements);
-});
-
-createNewPopup('.profile__edit-button', '.popup.popup_type_edit', openPopupEdit);
-
-createNewPopup('.profile__add-button', '.popup.popup_type_new-card', openPopupNewCard);
 
 function addCard(evt){
   evt.preventDefault();
@@ -68,6 +85,11 @@ function submitFormEdit(evt) {
     profileDescription.textContent = descriptionNew;
 
     closePopup(popupEdit);
-}
+};
 
 formEditProfile.addEventListener('submit', submitFormEdit); 
+
+initialCards.forEach(cardData => {
+  const cardElements = createCard(cardData, deleteCard, addLike, openCard);
+  placesList.append(cardElements);
+});
