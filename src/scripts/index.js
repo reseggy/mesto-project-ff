@@ -1,7 +1,7 @@
 import '../pages/index.css';
 import {initialCards} from './cards.js';
 import { closePopup } from './modal.js';
-import { ClosePopupListener } from './modal.js';
+import { setPopupListener } from './modal.js';
 import { createCard } from './card.js';
 import { addLike } from './card.js';
 import { deleteCard } from './card.js';
@@ -20,13 +20,9 @@ const popupEdit = document.querySelector('.popup_type_edit');
 const editButton = document.querySelector('.profile__edit-button');
 const addCardButton = document.querySelector('.profile__add-button');
 
-addCardButton.addEventListener('click', function(){
-  openPopupNewCard(popupCard);
-});
+addCardButton.addEventListener('click', () => openPopup(popupCard));
 
-editButton.addEventListener('click', function(){
-  openPopupEdit(popupEdit)
-});
+editButton.addEventListener('click', () => openPopupEdit(popupEdit));
 
 function openPopupEdit(popup) {
   nameInput.value = profileTitle.textContent;
@@ -34,25 +30,17 @@ function openPopupEdit(popup) {
   openPopup(popup);
 };
 
-function openPopupNewCard(popup) {
-  openPopup(popup);
-};
+setPopupListener('.popup.popup_type_edit', openPopupEdit);
 
-function openPopupImage(popup){
-  openPopup(popup);
-};
+setPopupListener('.popup.popup_type_new-card');
 
-ClosePopupListener('.popup.popup_type_edit', openPopupEdit);
-
-ClosePopupListener('.popup.popup_type_new-card', openPopupNewCard);
-
-ClosePopupListener('.popup.popup_type_image', openPopupImage);
+setPopupListener('.popup.popup_type_image');
 
 function openCard(link, name){
   image.src = link;
   image.alt = name;
   imageDescription.textContent = name;
-  openPopupImage(popupImage);
+  openPopup(popupImage);
 };
 
 function addCard(evt){
