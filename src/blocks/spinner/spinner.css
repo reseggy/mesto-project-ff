@@ -1,3 +1,5 @@
+@import url('./__visible/spinner__visible.css');
+
 .spinner {
   width: 1em;
   height: 1em;
