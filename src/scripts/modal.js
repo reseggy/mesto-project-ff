@@ -6,7 +6,7 @@ export function setPopupListener(popupSelector) {
   closeButton.addEventListener('click', function() {
     closePopup(popup);
   });
-
+  
   popup.addEventListener('click', function(evt) {
     if (evt.target === popup) {
       closePopup(popup);
@@ -32,3 +32,4 @@ function closeEsc(evt) {
     }
   }
 }
+

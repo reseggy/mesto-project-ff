@@ -1,0 +1,11 @@
+.profile__image_button {
+  position: absolute;
+  border-radius: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  z-index: 1;
+}

@@ -1,0 +1,53 @@
+.popup__input_error {
+  border-color: #ff0000;
+}
+
+.name-input-error {
+  color: #ff0000;
+  min-height: 12px;
+  margin-top: 5px;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+}
+
+.description-input-error {
+  color: #ff0000;
+  min-height: 12px;
+  margin-top: 5px;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+}
+
+.card-input-error {
+  color: #ff0000;
+  min-height: 12px;
+  margin-top: 5px;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+}
+
+.url-input-error {
+  color: #ff0000;
+  min-height: 12px;
+  margin-top: 5px;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+}
+
+.avatar-input-error {
+  color: #ff0000;
+  min-height: 12px;
+  margin-top: 5px;
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+}

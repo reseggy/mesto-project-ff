@@ -1,0 +1,14 @@
+.profile__image_edit {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  background: url('../../../../images/edit.svg') no-repeat;
+  background-size: contain; 
+  cursor: pointer;
+  opacity: 1;
+}
+
