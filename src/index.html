@@ -22,15 +22,15 @@
       <main class="content">
         <section class="profile page__section">
           <div class="profile__image">
-            <button class="profile__image_button"></button>
+            <button class="profile__image_button" aria-label="Изменить фотографию профиля"></button>
             <div class="profile__image_edit"></div>
           </div>
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button" type="button"></button>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать профиль"></button>
             <p class="profile__description">Исследователь океана</p>
           </div>
-          <button class="profile__add-button" type="button"></button>
+          <button class="profile__add-button" type="button" aria-label="Добавить место"></button>
         </section>
         <section class="places page__section">
           <ul class="places__list"></ul>
@@ -41,7 +41,7 @@
       </footer>
       <div class="popup popup_type_edit">
         <div class="popup__content">
-          <button type="button" class="popup__close"></button>
+          <button type="button" class="popup__close" aria-label="Закрыть модальное окно"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
           <form class="popup__form" name="editProfile" novalidate>
             <input
@@ -76,7 +76,7 @@
       </div>
       <div class="popup popup_type_new-card">
         <div class="popup__content">
-          <button type="button" class="popup__close"></button>
+          <button type="button" class="popup__close" aria-label="Закрыть модальное окно"></button>
           <h3 class="popup__title">Новое место</h3>
           <form class="popup__form" name="newPlace">
             <input
@@ -109,14 +109,14 @@
       </div>
       <div class="popup popup_type_image">
         <div class="popup__content popup__content_content_image">
-          <button type="button" class="popup__close"></button>
+          <button type="button" class="popup__close" aria-label="Закрыть модальное окно"></button>
           <img src="" alt="" class="popup__image" />
           <p class="popup__caption"></p>
         </div>
       </div>
       <div class="popup popup_type_confirm">
         <div class="popup__content popup__content_content_confirm">
-          <button type="button" class="popup__close"></button>
+          <button type="button" class="popup__close" aria-label="Закрыть модальное окно"></button>
           <h3 class="popup__title">Вы уверены?</h3>
           <button
             type="submit"
@@ -128,7 +128,7 @@
       </div>
       <div class="popup popup_type_edit-avatar">
         <div class="popup__content popup__content_content_edit-avatar">
-          <button type="button" class="popup__close"></button>
+          <button type="button" class="popup__close" aria-label="Закрыть модальное окно"></button>
           <h3 class="popup__title">Вы уверены?</h3>
           <form class="popup__form" name="editAvatar">
             <input
@@ -150,11 +150,11 @@
     <template id="card-template">
       <li class="places__item card">
         <img class="card__image" src="" alt="" />
-        <button type="button" class="card__delete-button"></button>
+        <button type="button" class="card__delete-button" aria-label="Удалить карточку"></button>
         <div class="card__description">
           <h2 class="card__title"></h2>
           <div class="card__like">
-            <button type="button" class="card__like-button"></button>
+            <button type="button" class="card__like-button" aria-label="Поставить лайк"></button>
             <span class="card__like-count">2</span>
           </div>
         </div>

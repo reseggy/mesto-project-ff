@@ -8,20 +8,23 @@ const config = {
   },
 };
 
+function handleResponse(res) {
+  if (res.ok) {
+    return res.json();
+  }
+  return Promise.reject(`Ошибка: ${res.status}`);
+}
+
 export function editProfile(newName, newDescription) {
   return fetch(`${config.baseUrl}/users/me`, {
     method: "PATCH",
     headers: config.headers,
     body: JSON.stringify({
       name: newName,
-      about: newDescription,
+      about: newDescription
     }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  })
+  .then(handleResponse);
 }
 
 export function cardAdd(cardName, cardLink) {
@@ -30,50 +33,34 @@ export function cardAdd(cardName, cardLink) {
     headers: config.headers,
     body: JSON.stringify({
       name: cardName,
-      link: cardLink,
+      link: cardLink
     }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  })
+  .then(handleResponse);
 }
 
 export function removeCard(cardId) {
   return fetch(`${config.baseUrl}/cards/${cardId}`, {
     method: "DELETE",
-    headers: config.headers,
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+    headers: config.headers
+  })
+  .then(handleResponse);
 }
 
 export function addLikeRequest(data) {
   return fetch(`${config.baseUrl}/cards/likes/${data._id}`, {
     method: "PUT",
-    headers: config.headers,
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+    headers: config.headers
+  })
+  .then(handleResponse);
 }
 
 export function removeLikeRequest(data) {
   return fetch(`${config.baseUrl}/cards/likes/${data._id}`, {
     method: "DELETE",
-    headers: config.headers,
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+    headers: config.headers
+  })
+  .then(handleResponse);
 }
 
 export function updateAvatarRequest(newAvatar) {
@@ -81,38 +68,26 @@ export function updateAvatarRequest(newAvatar) {
     method: "PATCH",
     headers: config.headers,
     body: JSON.stringify({
-      avatar: newAvatar,
+      avatar: newAvatar
     }),
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+  })
+  .then(handleResponse);
 }
 
 export function getUserName() {
   renderLoading(true);
   return fetch(`${config.baseUrl}/users/me`, {
     method: "GET",
-    headers: config.headers,
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+    headers: config.headers
+  })
+  .then(handleResponse);
 }
 
 export function getCards() {
   clearPlacesList(); //Без очистки при добавлении карточки все карточки продублируются
   return fetch(`${config.baseUrl}/cards`, {
     method: "GET",
-    headers: config.headers,
-  }).then((res) => {
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  });
+    headers: config.headers
+  })
+  .then(handleResponse);
 }

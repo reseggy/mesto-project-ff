@@ -1,5 +1,4 @@
-export function setPopupListener(popupSelector) {
-  const popup = document.querySelector(popupSelector);
+export function setPopupListeners(popup) {
   popup.classList.add("popup_is-animated");
 
   const closeButton = popup.querySelector(".popup__close");
