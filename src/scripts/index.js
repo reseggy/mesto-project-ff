@@ -144,15 +144,13 @@ export function clearPlacesList() {
   placesList.textContent = "";
 }
 
-Promise.all([
-  getUserName().then((result) => {
-    profileTitle.textContent = result.name;
-    profileDescription.textContent = result.about;
-    profileAvatar.style.backgroundImage = `url(${result.avatar})`;
-    userId = result._id;
-  }),
-  getCards().then((result) => {
-    result.forEach((cardData) => {
+Promise.all([getUserName(), getCards()])
+  .then(([user, cards]) => {
+    profileTitle.textContent = user.name;
+    profileDescription.textContent = user.about;
+    profileAvatar.style.backgroundImage = `url(${user.avatar})`;
+    userId = user._id;
+    cards.forEach((cardData) => {
       const likesCount = cardData.likes.length;
       const cardElement = createCard(
         cardData,
@@ -163,9 +161,9 @@ Promise.all([
         userId
       );
       placesList.append(cardElement);
+
     });
-  }),
-])
+  })
   .then(() => {
     renderLoading(false);
   })
@@ -178,7 +176,6 @@ editAvatarButton.addEventListener("click", function () {
   formEditAvatar.reset();
   openPopup(popupEditAvatar);
 });
-
 
 const newAvatarLink = formEditAvatar.linkAvatar;
 
